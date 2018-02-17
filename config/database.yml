@@ -1,0 +1,18 @@
+development:
+  host: localhost
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  database: assignment_project_new_development
+  username: root
+  password: root
+
+# test:
+#   <<: *default
+#   database: assignment-project_test
+
+# production:
+#   <<: *default
+#   database: assignment-project_production
+#   username: assignment-project
+#   password: <%= ENV['ASSIGNMENT-PROJECT_DATABASE_PASSWORD'] %>

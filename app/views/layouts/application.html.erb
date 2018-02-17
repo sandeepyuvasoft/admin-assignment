@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AssignmentProject</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%if user_signed_in?%>
+      <a href="/users/sign_out" data-method="delete"><span class="glyphicon glyphicon-log-in"></span> Log out</a>   
+    <%end%>
+    <%= yield %>
+  </body>
+</html>
