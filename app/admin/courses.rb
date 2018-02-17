@@ -19,7 +19,7 @@ ActiveAdmin.register Course do
       f.input :code
       f.input :duration
     end
-    f.inputs do
+    f.inputs"New Batches" do
       f.has_many :batches, heading: false, allow_destroy: true,new_record: true do |a|
         a.input :name
         a.input :academic_year
