@@ -15,7 +15,11 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-    			  <li><a href="/teachers" data-method="get"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Teacher </a></li>
+            <%if current_user.type == 'Teacher'%>
+    			    <li><a href="/teachers" data-method="get"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Teacher </a></li>
+            <%else%>
+              <li><a href="/students" data-method="get"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Student </a></li>
+            <%end%>
             <li><a href="/assignments" data-method="get"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Assignment </a></li>
           </ul>
 

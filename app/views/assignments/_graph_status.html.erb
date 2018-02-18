@@ -1,0 +1,52 @@
+<script src= "https://cdn.zingchart.com/zingchart.min.js"></script>
+<div id='myChart'></div>
+<script type="text/javascript">
+  $(document).ready(function() { 
+  var myConfig = {
+  "type":"ring",
+  "title":{
+    "text":"Assignment Status"
+  },
+  "plot":{
+    "value-box":{
+      "text":"%pie-total-value",
+      "placement":"center",
+      "font-color":"black",
+      "font-size":35,
+      "font-family":"Georgia",
+      "font-weight":"normal",
+      "rules":[
+        {
+          "rule":"%p != 0",
+          "visible":false
+        }
+      ]
+    },
+
+    "slice":"40%",
+    "border-width":2,
+    "border-color":"#000000"
+  },
+
+  "series":[
+    {
+      "values":[<%=@assigned_user.status%>],
+      "background-color":"#A3CE4E",
+      "text":"Alpha"
+    },
+    {
+      "values":[<%=100- @assigned_user.status.to_i%>],
+      "background-color":"#B66D5E",
+      "text":"Alpha"
+    }
+  ]
+};
+ 
+zingchart.render({ 
+    id : 'myChart', 
+    data : myConfig, 
+    height: 400, 
+    width: "100%" 
+});
+});
+</script>

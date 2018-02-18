@@ -1,0 +1,24 @@
+<div class="container">           
+	<table class="table" border="">
+		<tr>
+	    <th colspan="3"><h3 align="center">Assignment</h3></th>
+	  </tr>
+	  <tr>
+	    <th> Name </th>
+	    <th> Start time </th>
+	    <th> End time </th>
+	  </tr>
+    </tr>
+    	<td><%=@assignment.name%></td>
+    	<td><%=@assignment.start_time%></td>
+    	<td><%=@assignment.end_time%></td>
+    </tr>
+	</table>
+	<%= form_tag(:controller => "assignments", :action => "create") do %>
+  	Status: <%= select_tag "status", options_for_select(['5','10','15','20','25','30','35','40','45','50','100'])%><br><br>
+  	<%= hidden_field_tag :assignment_id, params[:id] %>
+  	<%= submit_tag "Submit Status"%>
+	<% end %>
+</div>
+<%=render 'form'%>
+<%=render 'graph_status'%>

@@ -1,26 +1,49 @@
-<div class="container">
-	<h2>Assignments</h2>            
-	<table class="table" border="">
-	  <tr>
-	    <th> Name </th>
-	    <th> Start time </th>
-	    <th> End time </th>
-	    <th> Student </th>
-	  </tr>
-	  <%@assignments.each do |assignment|%>
-	    </tr>
-	    	<td><%=assignment.name%></td>
-	    	<td><%=assignment.start_time%></td>
-	    	<td><%=assignment.end_time%></td>
-	    	<%assignment_users(assignment).each do |user|%>
-	    		<%if user.present?%>
-	    			<td><%=user.email%>&nbsp
-	    			<%=link_to "Show" , user_status_path(user.id,assignment.id)%>
-	    			<br>
-	    		<%end%>
-	    		</td>
-	    	<%end%>
-	    </tr>
-	  <%end%>
-	</table>
-</div>
+<%if current_user.type == 'Teacher'%>
+	<div class="container">
+		<h2>Assignments</h2>            
+		<table class="table" border="">
+		  <tr>
+		    <th> Name </th>
+		    <th> Start time </th>
+		    <th> End time </th>
+		    <th> Student </th>
+		  </tr>
+		  <%@assignments.each do |assignment|%>
+		    </tr>
+		    	<td><%=assignment.name%></td>
+		    	<td><%=assignment.start_time%></td>
+		    	<td><%=assignment.end_time%></td>
+		    	<td>
+		    	<%assignment_users(assignment).each do |user|%>
+		    		<%if user.present?%>
+		    			<%=user.email%>&nbsp
+		    			<%=link_to "Show" , user_status_path(user.id,assignment.id)%>
+		    			<br>
+		    		<%end%>
+		    	<%end%>
+		    	</td>
+		    </tr>
+		  <%end%>
+		</table>
+	</div>
+<%else%>
+	<div class="container">
+		<h2>Assignments</h2>            
+		<table class="table" border="">
+		  <tr>
+		    <th> Name </th>
+		    <th> Start time </th>
+		    <th> End time </th>
+		    <th> Action </th>
+		  </tr>
+		  <%@assignments.each do |assignment|%>
+		    </tr>
+		    	<td><%=assignment.name%></td>
+		    	<td><%=assignment.start_time%></td>
+		    	<td><%=assignment.end_time%></td>
+		    	<td><%=link_to "Show" , assignment_path(assignment.id)%></td>
+		    </tr>
+		  <%end%>
+		</table>
+	</div>
+<%end%>
